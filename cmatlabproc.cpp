@@ -1,4 +1,5 @@
 #include "cmatlabproc.h"
+#include <iostream>
 
 CMatLabProc::CMatLabProc(QString pathToMat, QString pathToFile, QFileInfoList listFiles)
 {
@@ -6,18 +7,23 @@ CMatLabProc::CMatLabProc(QString pathToMat, QString pathToFile, QFileInfoList li
     this->listFiles= listFiles;
     this->pathToMat = pathToMat;
     this->pathToFile = pathToFile;
+    path = listFiles.at(0).filePath();
+    std::replace(path.begin(), path.end(), QChar('\\'), QChar('/'));
 }
 
 bool CMatLabProc::start()
 {
-   //QObject::connect(&proc, SIGNAL(started()), (QObject*)this, SLOT(writeToMatlab()));
-    QString str = pathToMat + "-r cd " + pathToFile
-            + ", try, run('" + pathToFile + "/"
-            + listFiles.at(0).baseName() + "'); end; quit";
-    proc.startDetached(str);
+    QString str = pathToMat + " -nodisplay -nosplash -nodesktop -r \"load('" +
+            path + "')\";";
+    proc.start(str);
+
     if(proc.waitForStarted())
     {
-       // QTimer::singleShot(10000, this, SLOT(writeToMatlab()));
+
+        QByteArray script = "x\n";
+
+        proc.write(script);
+        writeToMatlab();
         return true;
     }
     return false;
@@ -33,9 +39,7 @@ void CMatLabProc::writeToMatlab()
     //if (state != IDLE)
     //{
          state = CALC;
-         QByteArray script = "clear;\n"
-                 "load " + pathToFile.toAscii() +"\n"
-                 "x\n";
+         QByteArray script = "x\n";
          proc.write(script);
          proc.closeWriteChannel();
          QObject::connect(&proc, SIGNAL(readyReadStandardOutput()), (QObject*)this, SLOT(stream()));

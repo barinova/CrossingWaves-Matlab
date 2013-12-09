@@ -21,6 +21,8 @@ void CMainWindow::on_buttonBrowse_clicked()
                                                  | QFileDialog::DontResolveSymlinks);
    // fileName = QFileDialog::getOpenFileName(this, tr("Open File"),"/path/to/file/",tr("MAT Files (*.mat)"));
     ui->fileNameEdit->setText(fileName);
+
+    std::replace( fileName.begin(), fileName.end(), QChar('\\'), QChar('/') );
     contentList(fileName);
 }
 
@@ -41,7 +43,9 @@ void CMainWindow::on_buttonBrowseMat_clicked()
 
 void CMainWindow::contentList(QString fileName)
 {
-    QDir dir;// = new QDir();
-    //dir->setNameFilters(QStringList()<<"*.mat");
-    listFiles = dir.entryInfoList();
+    QStringList nameFilter;
+    QDir dir(fileName);// = new QDir();
+    nameFilter << "*.mat";
+
+    listFiles = dir.entryInfoList(nameFilter, QDir::Files);
 }

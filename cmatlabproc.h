@@ -14,7 +14,7 @@ private:
     enum State {IDLE, ERROR, CALC};
     State state;
     QFileInfoList listFiles;
-    QString pathToMat, pathToFile;
+    QString pathToMat, pathToFile, path;
 
 public:
     CMatLabProc(QString pathToMat, QString pathToFile, QFileInfoList listFiles);
