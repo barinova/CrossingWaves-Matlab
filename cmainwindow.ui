@@ -23,15 +23,18 @@
       <height>411</height>
      </rect>
     </property>
+    <property name="currentIndex">
+     <number>0</number>
+    </property>
     <widget class="QWidget" name="tab">
      <attribute name="title">
-      <string>Imput paramertres</string>
+      <string>Converter</string>
      </attribute>
      <widget class="QLineEdit" name="fileNameEdit">
       <property name="geometry">
        <rect>
-        <x>30</x>
-        <y>40</y>
+        <x>10</x>
+        <y>70</y>
         <width>281</width>
         <height>21</height>
        </rect>
@@ -40,8 +43,8 @@
      <widget class="QPushButton" name="buttonBrowse">
       <property name="geometry">
        <rect>
-        <x>330</x>
-        <y>40</y>
+        <x>310</x>
+        <y>70</y>
         <width>75</width>
         <height>23</height>
        </rect>
@@ -53,8 +56,8 @@
      <widget class="QLabel" name="label">
       <property name="geometry">
        <rect>
-        <x>30</x>
-        <y>20</y>
+        <x>10</x>
+        <y>50</y>
         <width>181</width>
         <height>16</height>
        </rect>
@@ -66,8 +69,8 @@
      <widget class="QLabel" name="label_2">
       <property name="geometry">
        <rect>
-        <x>30</x>
-        <y>80</y>
+        <x>10</x>
+        <y>110</y>
         <width>161</width>
         <height>16</height>
        </rect>
@@ -79,8 +82,8 @@
      <widget class="QPushButton" name="buttonBrowseMat">
       <property name="geometry">
        <rect>
-        <x>330</x>
-        <y>100</y>
+        <x>310</x>
+        <y>130</y>
         <width>75</width>
         <height>23</height>
        </rect>
@@ -92,30 +95,43 @@
      <widget class="QLineEdit" name="fileNameEditMat">
       <property name="geometry">
        <rect>
-        <x>30</x>
-        <y>100</y>
+        <x>10</x>
+        <y>130</y>
         <width>281</width>
         <height>21</height>
        </rect>
       </property>
      </widget>
-     <widget class="QPushButton" name="buttonCalculate">
+     <widget class="QPushButton" name="buttonCovert">
       <property name="geometry">
        <rect>
-        <x>330</x>
-        <y>150</y>
+        <x>310</x>
+        <y>180</y>
         <width>75</width>
         <height>23</height>
        </rect>
       </property>
       <property name="text">
-       <string>Calculate</string>
+       <string>Convert</string>
+      </property>
+     </widget>
+     <widget class="QLabel" name="label_3">
+      <property name="geometry">
+       <rect>
+        <x>10</x>
+        <y>20</y>
+        <width>361</width>
+        <height>16</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>The first step you should convert files from MAT to DAT format</string>
       </property>
      </widget>
     </widget>
     <widget class="QWidget" name="tab_2">
      <attribute name="title">
-      <string>Tab 2</string>
+      <string>Calculate</string>
      </attribute>
     </widget>
    </widget>

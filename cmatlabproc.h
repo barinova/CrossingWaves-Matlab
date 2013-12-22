@@ -14,7 +14,7 @@ private:
     enum State {IDLE, ERROR, CALC};
     State state;
     QFileInfoList listFiles;
-    QString pathToMat, pathToFile, path;
+    QString pathToMat, pathToFile, path, newPathToFile;
 
 public:
     CMatLabProc(QString pathToMat, QString pathToFile, QFileInfoList listFiles);
@@ -25,7 +25,7 @@ public:
 private slots:
     void stream();
     void err();
-    void writeToMatlab();
+    void openSlots();
 
 //signals:
 // void fin(QByteArray data);

@@ -26,15 +26,6 @@ void CMainWindow::on_buttonBrowse_clicked()
     contentList(fileName);
 }
 
-void CMainWindow::on_buttonCalculate_clicked()
-{
-    if(fileName != "" && fileMatlab != "" && !listFiles.empty())
-    {
-        CMatLabProc* mat = new CMatLabProc("\"" + fileMatlab + "\"", fileName, listFiles);
-        mat->start();
-    }
-}
-
 void CMainWindow::on_buttonBrowseMat_clicked()
 {
     fileMatlab = QFileDialog::getOpenFileName(this, tr("Open File"),"/path/to/file/",tr("EXE Files (*.exe)"));
@@ -44,8 +35,17 @@ void CMainWindow::on_buttonBrowseMat_clicked()
 void CMainWindow::contentList(QString fileName)
 {
     QStringList nameFilter;
-    QDir dir(fileName);// = new QDir();
+    QDir dir(fileName);
     nameFilter << "*.mat";
 
     listFiles = dir.entryInfoList(nameFilter, QDir::Files);
+}
+
+void CMainWindow::on_buttonCovert_clicked()
+{
+    if(fileName != "" && fileMatlab != "" && !listFiles.empty())
+    {
+        CMatLabProc* mat = new CMatLabProc("\"" + fileMatlab + "\"", fileName, listFiles);
+        mat->start();
+    }
 }

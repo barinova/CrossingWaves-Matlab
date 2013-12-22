@@ -22,11 +22,9 @@ public:
 private slots:
     void on_buttonBrowse_clicked();
 
-    void on_buttonOpen_clicked();
-
-    void on_buttonCalculate_clicked();
-
     void on_buttonBrowseMat_clicked();
+
+    void on_buttonCovert_clicked();
 
 private:
     Ui::CMainWindow *ui;
